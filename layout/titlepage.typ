@@ -1,4 +1,5 @@
 #import "/layout/fonts.typ": *
+#import "logos.typ": *
 
 #let titlepage(
   title: "",
@@ -15,7 +16,7 @@
   assert(degree in ("Bachelor", "Master"), message: "The degree must be either 'Bachelor' or 'Master'")
   
   set page(
-    margin: (left: 20mm, right: 20mm, top: 30mm, bottom: 30mm),
+    margin: (left: 1cm, right: 1cm, top: 1cm, bottom: 1cm),
     numbering: none,
     number-align: center,
   )
@@ -26,26 +27,21 @@
     lang: "en"
   )
 
-  set par(leading: 0.5em)
+  set par(leading: LOGO_STYLES.leading)
 
-  
-  // --- Title Page ---
-  v(1cm)
-  align(center, image("/figures/tum_logo.png", width: 26%))
+  logos_horizontal_upper_caption()
+	v(2mm)
+	align(left, text(size: LOGO_STYLES.text_size, [*Zentrum für Digitalisierung und Digitalität*]))
+	align(left, text(size: LOGO_STYLES.text_size, [Centre for Digitalisation and Digitality]))
 
-  v(5mm)
-  align(center, text(font: fonts.sans, 2em, weight: 700, "Technical University of Munich"))
-
-  v(5mm)
-  align(center, text(font: fonts.sans, 1.5em, weight: 100, "School of Computation, Information and Technology \n -- Informatics --"))
-  
+  v(40mm)
+  align(center, text(font: fonts.body, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
   v(15mm)
-
-  align(center, text(font: fonts.sans, 1.3em, weight: 100, degree + "’s Thesis in " + program))
-  v(8mm)
-  
-
+ 
   align(center, text(font: fonts.sans, 2em, weight: 700, title))
+ 
+  v(10mm)
+  align(center, text(font: fonts.sans, 2em, weight: 500, author))
   
 
   align(center, text(font: fonts.sans, 2em, weight: 500, titleGerman))

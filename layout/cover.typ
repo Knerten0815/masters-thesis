@@ -18,12 +18,15 @@
     lang: "en"
   )
  
-  set par(leading: 1em)
- 
-  logos_horizontal_upper_caption()
+  set par(leading: LOGO_STYLES.leading)
 
-  v(15mm)
-  align(center, text(font: fonts.sans, 1.3em, weight: 100, degree + "'s Thesis in " + program))
+  logos_horizontal_upper_caption()
+	v(2mm)
+	align(left, text(size: LOGO_STYLES.text_size, [*Zentrum für Digitalisierung und Digitalität*]))
+	align(left, text(size: LOGO_STYLES.text_size, [Centre for Digitalisation and Digitality]))
+
+  v(40mm)
+  align(center, text(font: fonts.body, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
   v(15mm)
  
   align(center, text(font: fonts.sans, 2em, weight: 700, title))
