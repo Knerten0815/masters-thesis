@@ -16,7 +16,7 @@
   assert(degree in ("Bachelor", "Master"), message: "The degree must be either 'Bachelor' or 'Master'")
   
   set page(
-    margin: (left: 1cm, right: 1cm, top: 1cm, bottom: 1cm),
+    margin: (left: 1cm, right: 1cm, top: 1cm, bottom: 2.5cm),
     numbering: none,
     number-align: center,
   )
@@ -34,16 +34,12 @@
 	align(left, text(size: LOGO_STYLES.text_size, [*Zentrum für Digitalisierung und Digitalität*]))
 	align(left, text(size: LOGO_STYLES.text_size, [Centre for Digitalisation and Digitality]))
 
-  v(40mm)
-  align(center, text(font: fonts.body, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
-  v(15mm)
+  v(25mm)
+  align(center, text(font: fonts.sans, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
+  align(center, text(font: fonts.body, 2em, weight: 700, title))
  
-  align(center, text(font: fonts.sans, 2em, weight: 700, title))
- 
-  v(10mm)
+  v(20mm)
   align(center, text(font: fonts.sans, 2em, weight: 500, author))
-  
-
   align(center, text(font: fonts.sans, 2em, weight: 500, titleGerman))
 
   let entries = ()
@@ -58,7 +54,7 @@
 
   v(1cm)
   align(
-    center,
+    center + bottom,
     grid(
       columns: 2,
       gutter: 1em,

@@ -26,11 +26,9 @@
 	align(left, text(size: LOGO_STYLES.text_size, [Centre for Digitalisation and Digitality]))
 
   v(40mm)
-  align(center, text(font: fonts.body, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
-  v(15mm)
+  align(center, text(font: fonts.sans, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
+  align(center, text(font: fonts.body, 2em, weight: 700, title))
  
-  align(center, text(font: fonts.sans, 2em, weight: 700, title))
- 
-  v(10mm)
+  v(25mm)
   align(center, text(font: fonts.sans, 2em, weight: 500, author))
 }
