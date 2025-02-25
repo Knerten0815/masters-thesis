@@ -12,7 +12,7 @@
 - How is molecular similarity used in this context:
 	- properties of unknown moles can be derived from known moles
 	- fingerprints, similarity maps
-- Describe matchms, ms2deepscore, ChemSpaceExplorer
+- Describe matchms @Huber2020, ms2deepscore @Huber2021, ChemSpaceExplorer
 - Similarity of Spectra via distance in chemcical space
 	- the molecular structure of spectra in the ChemSpace is known
 	- molecular structure of similiar spectra can assist the process of finding the molecular strucutre to MS

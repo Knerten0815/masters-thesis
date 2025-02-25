@@ -154,5 +154,5 @@
   include("/layout/appendix.typ")
 
   pagebreak()
-  bibliography("/thesis.bib")
+  bibliography("/thesis.bib", style: "ieee") // to change in-text citation change the cite funtion in line 105
 }
