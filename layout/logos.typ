@@ -3,7 +3,7 @@
 
 // Constants for logo styling
 #let LOGO_STYLES = {
-	let logo_size = 100pt
+	let logo_size = 80pt
 	(
 		logo_size: logo_size,
 		text_size: logo_size * (9.6/60),

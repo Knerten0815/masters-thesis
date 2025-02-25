@@ -34,7 +34,7 @@
 	align(left, text(size: LOGO_STYLES.text_size, [*Zentrum für Digitalisierung und Digitalität*]))
 	align(left, text(size: LOGO_STYLES.text_size, [Centre for Digitalisation and Digitality]))
 
-  v(25mm)
+  v(30mm)
   align(center, text(font: fonts.sans, LOGO_STYLES.text_size, weight: 100, degree + "'s Thesis in " + program))
   align(center, text(font: fonts.body, 2em, weight: 700, title))
  
