@@ -4,9 +4,12 @@
 #TODO[
 	Introduce the topic of your thesis, e.g. with a little historical overview:
 ]
+Mass spectrometry (MS) is a widely used analytical technique in chemistry and biology to identify and quantify molecules based on their mass-to-charge ratio. The technique was first developed in the early 20th century @Thomson1910 @Dempster1918 and has evolved significantly over the years. Today, MS is used in various fields, including proteomics, metabolomics, and environmental analysis, to study the composition of substance samples and identify unknown compounds. One of the key challenges in MS is the interpretation of the acquired data, which often requires expert knowledge and sophisticated algorithms to derive meaningful information from the raw measurements. In recent years, machine learning and data visualization techniques have been increasingly applied to MS data analysis to automate and improve the interpretation process. @Collins2021 @Liebal2020 The ChemSpaceExplorer team of University of Applied Sciences Düsseldorf develops modern visualization concepts for leveraging machine learning models in MS data analysis.
+This thesis focuses on the visualization of feature importance in machine learning models for mass spectrometry analysis to enhance the interpretability of the results and facilitate the identification of molecular structures from MS data. 
+
 - mass spectrums are used to derive molecular structural data
-	- complex manual process _(is there a name for the process?)_
-	- _is there actually another use case for MS?_
+	- This is called structural annotation and is a complex manual process _(is it though?)_
+	- Other use cases include isotope analysis, process monitoring, biomarker detection (for metabolite patterns)
 - Why is molecular structural data important:
 		- metabolomics _(TODO: what is this actually?)_, natural products _(and this?)_, drug discovery
 - How is molecular similarity used in this context:
