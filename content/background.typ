@@ -5,17 +5,22 @@
   Describe each proven technology / concept shortly that is important to understand your thesis. Point out why it is interesting for your thesis. Make sure to incorporate references to important literature here.
 ]
 
-== e.g. User Feedback
+== Mass Spectrometry
 #TODO[
-  This section would summarize the concept User Feedback using definitions, historical overviews and pointing out the most important aspects of User Feedback.
+  This section would summarize the results of mass spectrometry using definitions, historical overviews and pointing out the most important aspects of mass spectrometry for this thesis.
 ]
 
-== e.g. Representational State Transfer
+== Molecular Structure and Molecular Similarity
 #TODO[
-  This section would summarize the architectural style Representational State Transfer (REST) using definitions, historical overviews and pointing out the most important aspects of the architecture.
+  This section would summarize the concepts of molecular structure and molecular similarity using definitions, historical overviews and pointing out the most important aspects of of molecular structure and molecular similarity for this thesis.
 ]
 
-== e.g. Scrum
+== matchMS, ms2deepscore and ChemSpaceExplorer
 #TODO[
-  This section would summarize the agile method Scrum using definitions, historical overviews and pointing out the most important aspects of Scrum.
+  This section would summarize the tools matchMS, ms2deepscore and ChemSpaceExplorer using definitions, historical overviews and pointing out the most important aspects of these tools.
+]
+
+== Explainable AI
+#TODO[
+  This section would summarize the concept of explainable AI using definitions, historical overviews and pointing out the most important aspects of explainable AI.
 ]
