@@ -20,9 +20,16 @@
 )
 
 #include "/content/introduction.typ"
+#pagebreak(weak: true)
 #include "/content/background.typ"
+#pagebreak(weak: true)
 #include "/content/related_work.typ"
-#include "/content/requirements_analysis.typ"
-#include "/content/system_design.typ"
+#pagebreak(weak: true)
+#include "/content/implementation.typ"
+#pagebreak(weak: true)
+#include "/content/methodology.typ"
+#pagebreak(weak: true)
 #include "/content/evaluation.typ"
+#pagebreak(weak: true)
 #include "/content/summary.typ"
+#pagebreak(weak: true)

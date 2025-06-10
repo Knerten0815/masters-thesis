@@ -1,6 +1,6 @@
 #import "/utils/todo.typ": TODO
 
-= Requirements Analysis
+= Requirements Analysis <requirements-analysis>
 #TODO[
   This chapter follows the Requirements Analysis Document Template in @bruegge2004object. Important: Make sure that the whole chapter is independent of the chosen technology and development platform. The idea is that you illustrate concepts, taxonomies and relationships of the application domain independent of the solution domain! Cite @bruegge2004object several times in this chapter.
 ]
@@ -24,17 +24,17 @@
 #TODO[
   List and describe all functional requirements of your system. Also mention requirements that you were not able to realize. The short title should be in the form “verb objective”
 
-  - FR1 Short Title: Short Description. 
-  - FR2 Short Title: Short Description. 
+  - FR1 Short Title: Short Description.
+  - FR2 Short Title: Short Description.
   - FR3 Short Title: Short Description.
 ]
 
-=== Nonfunctional Requirements
+=== Nonfunctional Requirements <non-functional-requirements>
 #TODO[
   List and describe all nonfunctional requirements of your system. Also mention requirements that you were not able to realize. Categorize them using the FURPS+ model described in @bruegge2004object without the category functionality that was already covered with the functional requirements.
 
-  - NFR1 Category: Short Description. 
-  - NFR2 Category: Short Description. 
+  - NFR1 Category: Short Description.
+  - NFR2 Category: Short Description.
   - NFR3 Category: Short Description.
 
 ]
