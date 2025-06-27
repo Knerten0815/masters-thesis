@@ -25,11 +25,9 @@
 #pagebreak(weak: true)
 #include "/content/related_work.typ"
 #pagebreak(weak: true)
-#include "/content/implementation.typ"
-#pagebreak(weak: true)
 #include "/content/methodology.typ"
 #pagebreak(weak: true)
-#include "/content/evaluation.typ"
+#include "/content/results.typ"
 #pagebreak(weak: true)
-#include "/content/summary.typ"
+#include "/content/discussion.typ"
 #pagebreak(weak: true)

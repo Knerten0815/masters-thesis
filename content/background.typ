@@ -1,4 +1,6 @@
 #import "/utils/todo.typ": TODO
+#import "../utils/cite-marker.typ": CITE
+
 
 = Background <background>
 #TODO[
@@ -14,13 +16,12 @@
 #TODO[
   This section would summarize the concepts of molecular structure and molecular similarity using definitions, historical overviews and pointing out the most important aspects of of molecular structure and molecular similarity for this thesis.
 ]
+- fingerprints, especially count based Morgan Fingerprints #CITE[]
+- similarity measures, especially Tanimoto/Ruzicka/Tversky #CITE[]
 
-== matchMS, ms2deepscore and ChemSpaceExplorer
-#TODO[
-  This section would summarize the tools matchMS, ms2deepscore and ChemSpaceExplorer using definitions, historical overviews and pointing out the most important aspects of these tools.
+== ms2deepscore and ChemSpaceExplorer
+#TODO[This section would summarize the tools matchMS, ms2deepscore and ChemSpaceExplorer using definitions, historical overviews and pointing out the most important aspects of these tools.
 ]
+- ms2deepscore @ms2deepscore
+- chemical space @similarity @chemical_space
 
-== Explainable AI
-#TODO[
-  This section would summarize the concept of explainable AI using definitions, historical overviews and pointing out the most important aspects of explainable AI.
-]

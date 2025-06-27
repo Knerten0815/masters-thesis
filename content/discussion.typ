@@ -1,6 +1,8 @@
 #import "/utils/todo.typ": TODO
+#import "../utils/cite-marker.typ": CITE
 
-= Summary <summary>
+
+= Discussion <discussion>
 #TODO[
   This chapter includes the status of your thesis, a conclusion and an outlook about future work.
 ]

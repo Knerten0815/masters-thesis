@@ -77,6 +77,7 @@
   )
 
   show math.equation: set text(weight: 400)
+  set math.equation(numbering: "1.", number-align: bottom)
 
   // --- Headings ---
   show heading: set block(below: 0.85em, above: 1.75em)
@@ -86,15 +87,9 @@
   show ref: it => {
     let el = it.element
     if el != none and el.func() == heading and el.level == 1 {
-      link(
-        el.location(),
-        [_Chapter #numbering(el.numbering, ..counter(heading).at(el.location())): #el.body _],
-      )
+      link(el.location(), [#emph[Chapter #numbering(el.numbering, ..counter(heading).at(el.location())): #el.body]])
     } else if el != none and el.func() == heading and el.level > 1 {
-      link(
-        el.location(),
-        [_#numbering(el.numbering, ..counter(heading).at(el.location())): #el.body _],
-      )
+      link(el.location(), [#emph[#numbering(el.numbering, ..counter(heading).at(el.location())): #el.body]])
     } else {
       it
     }
@@ -137,18 +132,12 @@
   // List of figures.
   pagebreak()
   heading(numbering: none)[List of Figures]
-  outline(
-    title: "",
-    target: figure.where(kind: image),
-  )
+  outline(title: "", target: figure.where(kind: image))
 
   // List of tables.
   pagebreak()
   heading(numbering: none)[List of Tables]
-  outline(
-    title: "",
-    target: figure.where(kind: table),
-  )
+  outline(title: "", target: figure.where(kind: table))
 
   // Appendix.
   pagebreak()
