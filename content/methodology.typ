@@ -4,7 +4,6 @@
 
 
 = Methodology <methodology>
-// #TODO[documents the design and implementation of the implemented techniques to represent similarity relationships among analogue compounds. This chapter describes the algorithmic approach for visualizing mutual similarities between analogues, includes technical considerations and how the visualization techniques integrate into the ChemSpaceExplorer application.]
 Similarity maps are heat maps highlighting atomic similarity relationships between two compounds as described in @simmaps_ch and  @simmaps_cite.
 This chapter introduces Stacked Similarity Maps, that visually emphasize the atomic similarity relationships within a group of compounds of arbitrary size.
 Aditionally, the Stacked Group Similarity metric and Stacked Query Similarity metric are described, that will be used in @results to benchmark the validity of the Stacked Similarity Map visualization technique.
@@ -19,35 +18,30 @@ $
   tilde(W)_i^((k)) = sum_(j=1, j!=i)^n w_(i,j)^((k))
 $
 
-$tilde(W)_i^((k))$ is standardized to the range of $[-1, 1]$ by dividing them by the highest absolute $W_i^((k))$ where $m$ is the number of atoms in compound $i$:
+$tilde(W)_i^((k))$ is standardized to the range of $[-1, 1]$ by dividing them by the highest absolute $tilde(W)_i^((k))$ where $m$ is the number of atoms in compound $i$:
 $
-  W_i^((k)) = tilde(W)_i^((k)) / max(|tilde(W)_i^((1))|, |tilde(W)_i^((2))|, ..., |tilde(W)_i^((m))|), W_i^((k)) in [-1, 1]
+  W_i^((k)) = tilde(W)_i^((k)) / max(|tilde(W)_i^((1))|, |tilde(W)_i^((2))|, ..., |tilde(W)_i^((m))|)
 $ <m_stacked_atomic_weight>
-
-The complete SSM weight vector for compound $i$ contains the stacked weights for all its atoms:
-$
-  bold(W)_i = [W_i^((1)), W_i^((2)), ..., W_i^((m))]
-$ <m_ssm_weight_vector>
 
 $W_i^((k))$ is used to generate the SSM just like $w_(i,j)^((k))$ in a regular similarity map @simmaps_cite.
 The SSM heatmap represents atomic similarity realationships within the group, where substructures marked green contribute to a high group similarity, while red areas contribute to a low group similarity #FIG[SSM].
 
 == Stacked Group Similarity <sgs>
-The Stacked Group Similarity (SGS) is a similarity metric derived from SSM weigths for measuring the similarity within a group of compounds.
+The Stacked Group Similarity (SGS) is a similarity metric derived from SSM weights for measuring the similarity within a group of compounds.
 It will be used in comparison to state-of-the-art similarity metrics to test the validity of the SSM visualization technique.
 
-The SGS is the mean of all elements in the weight vectors $bold(W)_i$ for all compounds:
+The SGS is calculated by averaging the mean atomic weight of each compound in the group:
 $
   "SGS" = 1/n sum_(i=1)^n frac(1, m_i) sum_(k=1)^(m_i) W_i^((k))
 $ <m_sgs>
 
-where $n$ is the number of compounds in the group.
+where $n$ is the number of compounds in the group and $m_i$ is the number of atoms in compound $i$.
 
 Since the SSM weights $W_i^((k))$ are standardized to the range of $[-1, 1]$, the SGS also resides in that range.
 
 If the similarity metric used to calculate the atomic similarity weights $w_(i,j)^((k))$ fulfills the criteria for a similarity metric described by @similarity, the SGS will fulfill them too.
 It has to be said, that the SGS metric should not be used as a drop-in replacement for other similarity metrics, though.
-It can't aggregate any more insight into the the group similarity relationship as its underlying metric, but will always be more computationally expensive.
+It can not aggregate any more insight into the the group similarity relationship as its underlying metric, but will always be more computationally expensive.
 A simple group similarity approach, that takes the mean of all similarities within the group, will be more insightful in almost all cases.
 But the SGS is closely and intuitively intertwined with the SSM generation and can therefore be used to compare against the simpler group similarity approach, to test the validity of the visualization technique on a big dataset.
 
@@ -69,19 +63,16 @@ $
   s_i^((k)) = 1 - (|Delta_i^((k))|)/2
 $
 
-The SQS for the entire group is calculated as the mean of all scaled similarity values:
+The SQS for the entire group is calculated by averaging the mean scaled similarity value of each compound in the group:
 $
   "SQS" = 1/n sum_(i=1)^n frac(1, m_i) sum_(k=1)^(m_i) s_i^((k))
 $ <m_sqs>
-where $n$ is the number of compounds in the group, $bold(s)_i = [s_i^((1)), s_i^((2)), ..., s_i^((m_i))]$ and $m_i$ is the number of atoms in compound $i$.
+where $n$ is the number of compounds in the group and $m_i$ is the number of atoms in compound $i$.
 
-The SQS achieves high values when both the internal group similarity and the query-to-group similarities are high. Conversely, the SQS is low when both the internal group similarity and query-to-group similarities are low. The SQS will also be low when there is a mismatch: high internal group similarity but low query similarities, or vice versa. While low group similarity combined with high query similarity is theoretically possible, it is very unlikely in practice.
+The lower the difference between the within-group similarity and the query-to-group similarities, the higher the SQS will be. That means if both values are high, the SQS will be high, and it will also be high, if both values are low.
+Conversely, the SQS is low when there is a mismatch: high within-group similarity but low query-to-group similarities. This charecteristic is used to examine the analogue search of the ChemSpaceExplorer (see @explorer) and compare it to the ISF score (see @isf).
 
-This metric can be used to search databases for query-analogue groups that exhibit specific similarity patterns and to assess the quality of clustering algorithms.
-The SQS is compared to the ChemSpaceExplorer's ISF score (see @isf) as well as the mean similarities of each group member to the query.
-
-When the similarity of query to the group is high, and the similarity inside the group is high, the SQS is high to. When the similarity of query to the group is low, and the similarity within the group is low, the SQS is low too! The SQS will be low, when the similarity inside the group is high, but the similarities to the query are not, or vice versa. Low group similarity but high query similarity is theretically possible but very unlikely in practical though. The metric could be used to search databases for query-analogue groups fitting this description and use it to assess the the quality of clustering algorithms.
-The SQS is compared to the ChemSpaceExplorer's ISF score (see @isf) as well as the mean similarities of each member to the query.
+Cases where low within-group similarity are combined with high query-to-group similarity also cause a low SQS score. These cases would be very rare in practice, but the SQS could also be used to search databases for such cases.
 
 
 #figure(image("\figures\Similarity Maps\Beispiel gute Matches\query_mol.png", width: 50%), caption: [A curious figure.]) <testfig>

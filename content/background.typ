@@ -19,9 +19,10 @@
 - fingerprints, especially count based Morgan Fingerprints #CITE[]
 - similarity measures, especially Tanimoto/Ruzicka/Tversky #CITE[]
 
-== ms2deepscore and ChemSpaceExplorer
+== ms2deepscore and ms2Query
 #TODO[This section would summarize the tools matchMS, ms2deepscore and ChemSpaceExplorer using definitions, historical overviews and pointing out the most important aspects of these tools.
 ]
 - ms2deepscore @ms2deepscore
+- ms2Query @ms2query
 - chemical space @similarity @chemical_space
 

@@ -21,5 +21,8 @@ for atom in this_mol.get_atoms():
     weights.append(weight)
 ```@simmaps_cite
 
+== ChemSpaceExplorer <explorer>
+- ChemSpaceExplorer (@ms2query?)
+- analogue search
 
 == Integrated Similarity Flow <isf>
