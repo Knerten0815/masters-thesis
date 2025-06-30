@@ -16,8 +16,8 @@
 #TODO[
   This section would summarize the concepts of molecular structure and molecular similarity using definitions, historical overviews and pointing out the most important aspects of of molecular structure and molecular similarity for this thesis.
 ]
-- fingerprints, especially count based Morgan Fingerprints #CITE[]
-- similarity measures, especially Tanimoto/Ruzicka/Tversky #CITE[]
+- fingerprints, especially count based Morgan Fingerprints @morgan @morgan-count
+- similarity measures, especially Tanimoto/Ruzicka/Tversky @ruzicka @ruzicka2
 
 == ms2deepscore and ms2Query
 #TODO[This section would summarize the tools matchMS, ms2deepscore and ChemSpaceExplorer using definitions, historical overviews and pointing out the most important aspects of these tools.

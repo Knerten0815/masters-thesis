@@ -95,6 +95,96 @@ keywords = {drug discovery, chemical space, substructure search, chemical simila
 abstract = {Summary Drug discovery workflows extensively utilize the collected, standardized, and stored information as well as the immense possibilities stretched by chemically feasible molecules. One key aspect of data exploration is the identification of patterns among chemically related entities. This chapter provides insights into the nature of chemical space and associated data, along with practical elements of navigation-related workflows. Key challenges of the complexity and size of the chemical space are summarized. Chemical structure representations, fingerprinting techniques for similarity search, and substructure matching algorithms are discussed in the context of examples and usage guidelines. Advanced technologies that provide solutions for quick and efficient navigation in the chemical space are highlighted.}
 }
 
+// ------- Methodology ----------------
+@article{smiles,
+author = {Weininger, David},
+title = {SMILES, a chemical language and information system. 1. Introduction to methodology and encoding rules},
+journal = {Journal of Chemical Information and Computer Sciences},
+volume = {28},
+number = {1},
+pages = {31-36},
+year = {1988},
+doi = {10.1021/ci00057a005},
+URL = {https://doi.org/10.1021/ci00057a005},
+eprint = {https://doi.org/10.1021/ci00057a005}
+}
+
+@inproceedings{massspecgym,
+ author = {Bushuiev, Roman and Bushuiev, Anton and de Jonge, Niek F. and Young, Adamo and Kretschmer, Fleming and Samusevich, Raman and Heirman, Janne and Wang, Fei and Zhang, Luke and D\"{u}hrkop, Kai and Ludwig, Marcus and Haupt, Nils A. and Kalia, Apurva and Brungs, Corinna and Schmid, Robin and Greiner, Russell and Wang, Bo and Wishart, David S. and Liu, Li-Ping and Rousu, Juho and Bittremieux, Wout and Rost, Hannes and Mak, Tytus D. and Hassoun, Soha and Huber, Florian and van der Hooft, Justin J.J. and Stravs, Michael A. and B\"{o}cker, Sebastian and Sivic, Josef and Pluskal, Tom\'{a}\v{s}},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {A. Globerson and L. Mackey and D. Belgrave and A. Fan and U. Paquet and J. Tomczak and C. Zhang},
+ pages = {110010--110027},
+ publisher = {Curran Associates, Inc.},
+ title = {MassSpecGym: A benchmark for the discovery and identification of molecules},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2024/file/c6c31413d5c53b7d1c343c1498734b0f-Paper-Datasets_and_Benchmarks_Track.pdf},
+ volume = {37},
+ year = {2024}
+}
+
+@article{ruzicka,
+  title={Anwendung mathematisch-statisticher Methoden in der Geobotanik (synthetische Bearbeitung von Aufnahmen)},
+  author={Ru{\v{z}}i{\v{c}}ka, M},
+  journal={Biologia, Bratislava},
+  volume={13},
+  pages={647},
+  year={1958}
+}
+
+@incollection{ruzicka2,
+title = {Chapter 17 - Distances and Similarities in Data Analysis},
+editor = {Elena Deza and Michel-Marie Deza},
+booktitle = {Dictionary of Distances},
+publisher = {Elsevier},
+address = {Amsterdam},
+pages = {217-229},
+year = {2006},
+isbn = {978-0-444-52087-6},
+doi = {https://doi.org/10.1016/B978-044452087-6/50017-2},
+url = {https://www.sciencedirect.com/science/article/pii/B9780444520876500172},
+author = {Elena Deza and Michel-Marie Deza},
+abstract = {Publisher Summary
+This chapter deals with the subject of distances and similarities in data analysis. A data set is a finite set comprised of m sequences (x1 j . . . . . xn j), j ∈ { 1, . . . , m }, of length n. The values xi1, . . . , xim represent attribute Si. It can be numerical, including continuous (real numbers) and binary (presence/absence expressed by 1/0), ordinal (numbers expressing rank only), or nominal (which are not ordered). Cluster Analysis (or classification, taxonomy, and pattern recognition) consists mainly of partition of data A into relatively small number of clusters, that is, such sets of objects, that (with respect of selected measure of distance) the objects, at best possible degree, are “close” if they belong to the same cluster, “far” if they belong to different clusters, and further subdivision into clusters impair above two conditions. The chapter defines multidimensional scaling as a technique developed in the behavioral and social sciences for studying the structure of objects or people. Together with cluster analysis, it is based on distance methods. Similarities and distances for numerical data, relatives of Euclidean distance, and similarities and distances for binary data are described in the chapter.}
+}
+
+@article{ruzicka1-cite-origin,
+author = {Schubert, Andras and Telcs, András},
+year = {2014},
+month = {02},
+pages = {},
+title = {A note on the Jaccardized Czekanowski similarity index},
+volume = {98},
+journal = {Scientometrics},
+doi = {10.1007/s11192-013-1044-2}
+}
+
+@article{morgan,
+author = {Morgan, H. L.},
+title = {The Generation of a Unique Machine Description for Chemical Structures-A Technique Developed at Chemical Abstracts Service.},
+journal = {Journal of Chemical Documentation},
+volume = {5},
+number = {2},
+pages = {107-113},
+year = {1965},
+doi = {10.1021/c160017a018},
+URL = {https://doi.org/10.1021/c160017a018},
+eprint = {https://doi.org/10.1021/c160017a018}
+}
+
+@article{morgan-count,
+author = {Zhong, Shifa and Guan, Xiaohong},
+title = {Count-Based Morgan Fingerprint: A More Efficient and Interpretable Molecular Representation in Developing Machine Learning-Based Predictive Regression Models for Water Contaminants’ Activities and Properties},
+journal = {Environmental Science \& Technology},
+volume = {57},
+number = {46},
+pages = {18193-18202},
+year = {2023},
+doi = {10.1021/acs.est.3c02198},
+note ={PMID: 37406199},
+URL = {https://doi.org/10.1021/acs.est.3c02198},
+eprint = {https://doi.org/10.1021/acs.est.3c02198}
+}
+
+
 // ------- Hubi projects --------------
 @Article{ms2deepscore,
   author   = {Huber, Florian and van der Burg, Sven and van der Hooft, Justin J. J. and Ridder, Lars},
@@ -138,6 +228,16 @@ abstract = {Summary Drug discovery workflows extensively utilize the collected, 
 	URL = {https://www.biorxiv.org/content/early/2025/06/22/2025.06.16.659994},
 	eprint = {https://www.biorxiv.org/content/early/2025/06/22/2025.06.16.659994.full.pdf},
 	journal = {bioRxiv}
+}
+
+@dataset{dataset,
+  author       = {Huber, Florian},
+  title        = {Molecular datasets for fingerprint benchmarking},
+  month        = jun,
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.15650045},
+  url          = {https://doi.org/10.5281/zenodo.15650045},
 }
 
 @Article{matchms,
