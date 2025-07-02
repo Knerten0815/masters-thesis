@@ -1,3 +1,5 @@
+// Press Ctrl+K, V here, to open preview in VSCode
+
 #import "/layout/thesis_template.typ": *
 #import "/metadata.typ": *
 
