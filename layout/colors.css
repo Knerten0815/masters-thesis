@@ -1,0 +1,372 @@
+/* HSD Color Palette converted from Typst to CSS
+*  can be used to load as a color swatch into adobe software
+ */
+
+:root {
+    /* Primary Colors */
+    --hsd-red: #e60028;
+    /* PANTONE 185, CMYK 0 100 80 0, RGB 230 0 40 */
+    --hsd-yellow: #ffeb00;
+    /* PANTONE 101, CMYK 0 0 90 0, RGB 255 235 0 */
+    --hsd-blue: #00afd7;
+    /* PANTONE 638, CMYK 85 0 10 0, RGB 0 175 215 */
+    --hsd-green: #64B432;
+    /* PANTONE 360, CMYK 60 0 95 0, RGB 100 180 50 */
+
+    /* Basic Colors */
+    --hsd-white: #ffffff;
+    --hsd-black: #000000;
+    --hsd-teal: #004C5F;
+    --hsd-darkyellow: #937E00;
+    --hsd-darkred: #780B24;
+    --hsd-lightred: #E0BDB3;
+    --hsd-lightblue: #ABCBD7;
+    --hsd-lightgreen: #8FFF7B;
+    --hsd-lightgrey: #E6E6E6;
+    --hsd-grey: #C8C8C8;
+    --hsd-darkgrey: #464646;
+    --hsd-beige: #EEECE1;
+
+    /* Red Shades (5 variations) */
+    --hsd-red-1: #FFC7D1;
+    --hsd-red-2: #FF8FA2;
+    --hsd-red-3: #FF5774;
+    --hsd-red-4: #AD001E;
+    --hsd-red-5: #730014;
+
+    /* Yellow Shades (5 variations) */
+    --hsd-yellow-1: #FFFBCC;
+    --hsd-yellow-2: #FFF799;
+    --hsd-yellow-3: #FFF366;
+    --hsd-yellow-4: #BFB000;
+    --hsd-yellow-5: #7F7500;
+
+    /* Blue Shades (5 variations) */
+    --hsd-blue-1: #C4F4FF;
+    --hsd-blue-2: #89E9FF;
+    --hsd-blue-3: #4EDEFF;
+    --hsd-blue-4: #0083A1;
+    --hsd-blue-5: #00576C;
+
+    /* Green Shades (5 variations) */
+    --hsd-green-1: #DFF3D3;
+    --hsd-green-2: #C0E7A7;
+    --hsd-green-3: #A0DA7C;
+    --hsd-green-4: #4B8726;
+    --hsd-green-5: #325A19;
+
+    /* White Shades (5 variations) */
+    --hsd-white-1: #F2F2F2;
+    --hsd-white-2: #D9D9D9;
+    --hsd-white-3: #BFBFBF;
+    --hsd-white-4: #A6A6A6;
+    --hsd-white-5: #7F7F7F;
+
+    /* Black Shades (5 variations) */
+    --hsd-black-1: #7F7F7F;
+    --hsd-black-2: #595959;
+    --hsd-black-3: #404040;
+    --hsd-black-4: #262626;
+    --hsd-black-5: #0D0D0D;
+
+    /* Teal Shades (5 variations) */
+    --hsd-teal-1: #D6F7FF;
+    --hsd-teal-2: #97EAFF;
+    --hsd-teal-3: #30D5FF;
+    --hsd-teal-4: #009FC7;
+    --hsd-teal-5: #006D89;
+
+    /* Dark Yellow Shades (5 variations) */
+    --hsd-darkyellow-1: #FFF5B6;
+    --hsd-darkyellow-2: #FFEA6E;
+    --hsd-darkyellow-3: #FFE025;
+    --hsd-darkyellow-4: #6E5F00;
+    --hsd-darkyellow-5: #4A3F00;
+
+    /* Dark Red Shades (5 variations) */
+    --hsd-darkred-1: #F9BAC8;
+    --hsd-darkred-2: #F27491;
+    --hsd-darkred-3: #EC2F5A;
+    --hsd-darkred-4: #5A081B;
+    --hsd-darkred-5: #3C0612;
+
+    /* Light Red Shades (5 variations) */
+    --hsd-lightred-1: #F9F2F0;
+    --hsd-lightred-2: #F3E5E1;
+    --hsd-lightred-3: #ECD7D1;
+    --hsd-lightred-4: #C37F6B;
+    --hsd-lightred-5: #8F4D3A;
+
+    /* Light Blue Shades (5 variations) */
+    --hsd-lightblue-1: #EEF5F7;
+    --hsd-lightblue-2: #DDEAEF;
+    --hsd-lightblue-3: #CDE0E7;
+    --hsd-lightblue-4: #6AA3B8;
+    --hsd-lightblue-5: #3E7083;
+
+    /* Light Green Shades (5 variations) */
+    --hsd-lightgreen-1: #E9FFE5;
+    --hsd-lightgreen-2: #D2FFCA;
+    --hsd-lightgreen-3: #BCFFB0;
+    --hsd-lightgreen-4: #3FFF1D;
+    --hsd-lightgreen-5: #1DBD00;
+
+    /* Light Grey Shades (5 variations) */
+    --hsd-lightgrey-1: #CFCFCF;
+    --hsd-lightgrey-2: #ADADAD;
+    --hsd-lightgrey-3: #737373;
+    --hsd-lightgrey-4: #3A3A3A;
+    --hsd-lightgrey-5: #171717;
+
+    /* Grey Shades (5 variations) */
+    --hsd-grey-1: #F4F4F4;
+    --hsd-grey-2: #E9E9E9;
+    --hsd-grey-3: #DEDEDE;
+    --hsd-grey-4: #969696;
+    --hsd-grey-5: #646464;
+
+    /* Dark Grey Shades (5 variations) */
+    --hsd-darkgrey-1: #DADADA;
+    --hsd-darkgrey-2: #B5B5B5;
+    --hsd-darkgrey-3: #909090;
+    --hsd-darkgrey-4: #353535;
+    --hsd-darkgrey-5: #232323;
+
+    /* Beige Shades (5 variations) */
+    --hsd-beige-1: #DDD9C3;
+    --hsd-beige-2: #C4BD97;
+    --hsd-beige-3: #948A54;
+    --hsd-beige-4: #4A452A;
+    --hsd-beige-5: #1E1C11;
+}
+
+/* Alternative format for direct hex values (if needed for conversion tools) */
+.color-palette {
+    /* Primary Colors */
+    color: #e60028;
+    /* hsd-red */
+    color: #ffeb00;
+    /* hsd-yellow */
+    color: #00afd7;
+    /* hsd-blue */
+    color: #64B432;
+    /* hsd-green */
+
+    /* Basic Colors */
+    color: #ffffff;
+    /* hsd-white */
+    color: #000000;
+    /* hsd-black */
+    color: #004C5F;
+    /* hsd-teal */
+    color: #937E00;
+    /* hsd-darkyellow */
+    color: #780B24;
+    /* hsd-darkred */
+    color: #E0BDB3;
+    /* hsd-lightred */
+    color: #ABCBD7;
+    /* hsd-lightblue */
+    color: #8FFF7B;
+    /* hsd-lightgreen */
+    color: #E6E6E6;
+    /* hsd-lightgrey */
+    color: #C8C8C8;
+    /* hsd-grey */
+    color: #464646;
+    /* hsd-darkgrey */
+    color: #EEECE1;
+    /* hsd-beige */
+
+    /* Red Shades */
+    color: #FFC7D1;
+    /* hsd-red-1 */
+    color: #FF8FA2;
+    /* hsd-red-2 */
+    color: #FF5774;
+    /* hsd-red-3 */
+    color: #AD001E;
+    /* hsd-red-4 */
+    color: #730014;
+    /* hsd-red-5 */
+
+    /* Yellow Shades */
+    color: #FFFBCC;
+    /* hsd-yellow-1 */
+    color: #FFF799;
+    /* hsd-yellow-2 */
+    color: #FFF366;
+    /* hsd-yellow-3 */
+    color: #BFB000;
+    /* hsd-yellow-4 */
+    color: #7F7500;
+    /* hsd-yellow-5 */
+
+    /* Blue Shades */
+    color: #C4F4FF;
+    /* hsd-blue-1 */
+    color: #89E9FF;
+    /* hsd-blue-2 */
+    color: #4EDEFF;
+    /* hsd-blue-3 */
+    color: #0083A1;
+    /* hsd-blue-4 */
+    color: #00576C;
+    /* hsd-blue-5 */
+
+    /* Green Shades */
+    color: #DFF3D3;
+    /* hsd-green-1 */
+    color: #C0E7A7;
+    /* hsd-green-2 */
+    color: #A0DA7C;
+    /* hsd-green-3 */
+    color: #4B8726;
+    /* hsd-green-4 */
+    color: #325A19;
+    /* hsd-green-5 */
+
+    /* White Shades */
+    color: #F2F2F2;
+    /* hsd-white-1 */
+    color: #D9D9D9;
+    /* hsd-white-2 */
+    color: #BFBFBF;
+    /* hsd-white-3 */
+    color: #A6A6A6;
+    /* hsd-white-4 */
+    color: #7F7F7F;
+    /* hsd-white-5 */
+
+    /* Black Shades */
+    color: #7F7F7F;
+    /* hsd-black-1 */
+    color: #595959;
+    /* hsd-black-2 */
+    color: #404040;
+    /* hsd-black-3 */
+    color: #262626;
+    /* hsd-black-4 */
+    color: #0D0D0D;
+    /* hsd-black-5 */
+
+    /* Teal Shades */
+    color: #D6F7FF;
+    /* hsd-teal-1 */
+    color: #97EAFF;
+    /* hsd-teal-2 */
+    color: #30D5FF;
+    /* hsd-teal-3 */
+    color: #009FC7;
+    /* hsd-teal-4 */
+    color: #006D89;
+    /* hsd-teal-5 */
+
+    /* Dark Yellow Shades */
+    color: #FFF5B6;
+    /* hsd-darkyellow-1 */
+    color: #FFEA6E;
+    /* hsd-darkyellow-2 */
+    color: #FFE025;
+    /* hsd-darkyellow-3 */
+    color: #6E5F00;
+    /* hsd-darkyellow-4 */
+    color: #4A3F00;
+    /* hsd-darkyellow-5 */
+
+    /* Dark Red Shades */
+    color: #F9BAC8;
+    /* hsd-darkred-1 */
+    color: #F27491;
+    /* hsd-darkred-2 */
+    color: #EC2F5A;
+    /* hsd-darkred-3 */
+    color: #5A081B;
+    /* hsd-darkred-4 */
+    color: #3C0612;
+    /* hsd-darkred-5 */
+
+    /* Light Red Shades */
+    color: #F9F2F0;
+    /* hsd-lightred-1 */
+    color: #F3E5E1;
+    /* hsd-lightred-2 */
+    color: #ECD7D1;
+    /* hsd-lightred-3 */
+    color: #C37F6B;
+    /* hsd-lightred-4 */
+    color: #8F4D3A;
+    /* hsd-lightred-5 */
+
+    /* Light Blue Shades */
+    color: #EEF5F7;
+    /* hsd-lightblue-1 */
+    color: #DDEAEF;
+    /* hsd-lightblue-2 */
+    color: #CDE0E7;
+    /* hsd-lightblue-3 */
+    color: #6AA3B8;
+    /* hsd-lightblue-4 */
+    color: #3E7083;
+    /* hsd-lightblue-5 */
+
+    /* Light Green Shades */
+    color: #E9FFE5;
+    /* hsd-lightgreen-1 */
+    color: #D2FFCA;
+    /* hsd-lightgreen-2 */
+    color: #BCFFB0;
+    /* hsd-lightgreen-3 */
+    color: #3FFF1D;
+    /* hsd-lightgreen-4 */
+    color: #1DBD00;
+    /* hsd-lightgreen-5 */
+
+    /* Light Grey Shades */
+    color: #CFCFCF;
+    /* hsd-lightgrey-1 */
+    color: #ADADAD;
+    /* hsd-lightgrey-2 */
+    color: #737373;
+    /* hsd-lightgrey-3 */
+    color: #3A3A3A;
+    /* hsd-lightgrey-4 */
+    color: #171717;
+    /* hsd-lightgrey-5 */
+
+    /* Grey Shades */
+    color: #F4F4F4;
+    /* hsd-grey-1 */
+    color: #E9E9E9;
+    /* hsd-grey-2 */
+    color: #DEDEDE;
+    /* hsd-grey-3 */
+    color: #969696;
+    /* hsd-grey-4 */
+    color: #646464;
+    /* hsd-grey-5 */
+
+    /* Dark Grey Shades */
+    color: #DADADA;
+    /* hsd-darkgrey-1 */
+    color: #B5B5B5;
+    /* hsd-darkgrey-2 */
+    color: #909090;
+    /* hsd-darkgrey-3 */
+    color: #353535;
+    /* hsd-darkgrey-4 */
+    color: #232323;
+    /* hsd-darkgrey-5 */
+
+    /* Beige Shades */
+    color: #DDD9C3;
+    /* hsd-beige-1 */
+    color: #C4BD97;
+    /* hsd-beige-2 */
+    color: #948A54;
+    /* hsd-beige-3 */
+    color: #4A452A;
+    /* hsd-beige-4 */
+    color: #1E1C11;
+    /* hsd-beige-5 */
+}
