@@ -1,5 +1,5 @@
 // Enter your thesis data here:
-#let titleEnglish = "Prediction and Visualization of Molecular Substructures Using Mass Spectrometry"
+#let titleEnglish = "Prediction and Visualization of Molecular Substructures using Mass Spectrometry"
 #let titleGerman = "Vorhersage und Visualisierung von Molekularstrukturen mittels Massenspektrometrie"
 #let degree = "Master"
 #let program = "Media Informatics"

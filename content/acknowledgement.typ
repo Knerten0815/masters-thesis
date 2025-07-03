@@ -1,4 +1,4 @@
-First, a big shoutout to Prof. Dr. Florian Huber and Julian Pollmann, as well as the whole MatchMS team, for providing valuable guidance and introducing me to the fascinating world of cheminformatics.
+First, a big shoutout to Prof. Dr. Florian Huber and Julian Pollmann, as well as the whole matchMS team, for providing valuable guidance and introducing me to the fascinating world of cheminformatics.
 
 To my family, for their support and encouragement _to finally get it done_ throughout my academic journey.
 

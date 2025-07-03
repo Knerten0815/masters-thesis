@@ -7,6 +7,7 @@
   Describe related work regarding your topic and emphasize your (scientific) contribution in contrast to existing approaches / concepts / workflows. Related work is usually current research by others and you defend yourself against the statement: “Why is your thesis relevant? The problem was al- ready solved by XYZ.” If you have multiple related works, use subsections to separate them.
 ]
 == Similarity maps <simmaps_ch>
+#TODO[heatmap erklären]
 The weights can be generated using any similarity metric on any fingerprint that enables the mapping of individual bits back to their corresponding atoms or substructures @simmaps_cite.
 ```typc
 ref_fp = calculate_fingerprint(ref_mol)
