@@ -1,8 +1,7 @@
-#import "/utils/todo.typ": TODO
+#import "../utils/todo.typ": TODO
 #import "../utils/cite-marker.typ": CITE
 #import "../utils/fig-marker.typ": FIG
 #import "../layout/colors.typ": *
-
 
 = Methodology <methodology>
 Similarity maps are heat maps highlighting atomic similarity relationships between two compounds as described in @simmaps_ch and  @simmaps_cite.
@@ -15,7 +14,7 @@ Finally, the practical implementation is described in @implementation.
 For a group of $n$ compounds ${C_1, C_2, ..., C_n}$, the pairwise atomic similarity weights between compounds $i$ and $j$ for atom $k$ are calculated as $w_(i,j)^((k))$, as described in @simmaps_ch, and stored in a matrix of weight vectors, where the diagonal is left empty (see @f_algo).
 
 #figure(
-  image("\figures\sim map algo.png", width: 100%),
+  image("../figures/sim map algo.png", width: 100%),
   caption: [Visualization of SQS, SSM and SGS algorithms.],
   placement: auto,
 ) <f_algo>

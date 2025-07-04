@@ -1,4 +1,4 @@
-#import "/layout/fonts.typ": *
+#import "fonts.typ": *
 
 #let disclaimer(
   title: "",

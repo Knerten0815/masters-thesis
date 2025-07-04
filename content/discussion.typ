@@ -1,8 +1,7 @@
-#import "/utils/todo.typ": TODO
+#import "../utils/todo.typ": TODO
 #import "../utils/cite-marker.typ": CITE
 #import "../utils/fig-marker.typ": FIG
 #import "../layout/colors.typ": colors
-
 
 = Discussion <discussion>
 #TODO[
