@@ -6,7 +6,7 @@
 = Methodology <methodology>
 Similarity maps are heat maps highlighting atomic similarity relationships between two compounds as described in @simmaps_ch and  @simmaps_cite.
 This chapter introduces Stacked Similarity Maps (SSM), that visually emphasize the atomic similarity relationships within a group of compounds of arbitrary size.
-THe following sections describe the Stacked Group Similarity (SGS) metric and Stacked Query Similarity (SQS) metric, that will be used in @results in the quantitative analysis of the Stacked Similarity Map visualization technique.
+The following sections describe the Stacked Group Similarity (SGS) metric and Consistency Score (CS), that will be used in @results in the quantitative analysis of the Stacked Similarity Map visualization technique.
 Finally, the practical implementation is described in @implementation.
 
 == Stacked Similarity Maps <ssm>
@@ -15,7 +15,7 @@ For a group of $n$ compounds ${C_1, C_2, ..., C_n}$, the pairwise atomic similar
 
 #figure(
   image("../figures/sim map algo.png", width: 100%),
-  caption: [Visualization of SQS, SSM and SGS algorithms.],
+  caption: [Visualization of CS, SSM and SGS algorithms.],
   placement: auto,
 ) <f_algo>
 
@@ -52,9 +52,9 @@ It can not aggregate any more insight into the the group similarity relationship
 A simple group similarity approach, that takes the mean of all similarities within the group, will be more insightful in almost all cases.
 But the SGS is closely and intuitively intertwined with the SSM generation and can therefore be used to compare against the simpler group similarity approach, to test the validity of the visualization technique on a big dataset.
 
-== Stacked Query Similarity <sqs>
+== Consistency Score <cs>
 
-The Stacked Query Similarity (SQS) measures _how the similarity relationships within a group of compounds match the similarities of each member of the group to another single molecule (query)._
+The Consistency Score (CS) measures _how the similarity relationships within a group of compounds match the similarities of each member of the group to another single molecule (query)._
 
 For a group of $n$ compounds ${C_1, C_2, ..., C_n}$ and a query molecule $Q$, the pairwise atomic similarity weights between compound $i$ and $Q$ for atom $k$ are calculated as $w_(i,Q)^((k))$, as described in @simmaps_ch.
 With the mean query weights (MQW) described as:
@@ -74,16 +74,16 @@ $
   s_i^((k)) = 1 - (|Delta_i^((k))|)/2
 $
 
-The SQS for the entire group is calculated by averaging the mean scaled similarity value of each compound in the group:
+The CS for the entire group is calculated by averaging the mean scaled similarity value of each compound in the group:
 $
-  "SQS" = 1/n sum_(i=1)^n frac(1, m_i) sum_(k=1)^(m_i) s_i^((k))
-$ <m_sqs>
+  "CS" = 1/n sum_(i=1)^n frac(1, m_i) sum_(k=1)^(m_i) s_i^((k))
+$ <m_cs>
 where $n$ is the number of compounds in the group and $m_i$ is the number of atoms in compound $i$.
 
-_The lower the difference between the within-group similarity and the query-to-group similarities, the higher the SQS will be._ That means if both values are high, the SQS will be high. The SQS will also be high, if both values are low.
-Conversely, the SQS is low when there is a mismatch: high within-group similarity but low query-to-group similarities. This characteristic is used to examine the analogue search of the ChemSpaceExplorer (see @explorer) and compare it to the ISF score (see @isf).
+_The lower the difference between the within-group similarity and the query-to-group similarities, the higher the CS will be._ That means if both values are high, the CS will be high. The CS will also be high, if both values are low.
+Conversely, the CS is low when there is a mismatch: high within-group similarity but low query-to-group similarities. This characteristic is used to examine the analogue search of the ChemSpaceExplorer (see @explorer) and compare it to the ISF score (see @isf).
 
-Cases where low within-group similarity are combined with high query-to-group similarity also cause a low SQS score.
+Cases where low within-group similarity are combined with high query-to-group similarity also cause a low CS score.
 
 == Quantitative Analysis <benchmark>
 
@@ -99,19 +99,19 @@ For analogue groups with $n<10$, only the most similar $n$ compounds from the an
 To find out the best default group size for the ChemSpaceExplorer's analogue search, #CITE[1000TestSpectra.mgf] were used as queries in the analogue search benchmark.
 
 === Stacked Similarity Map Benchmark <ssm_benchmark>
-For the SSM benchmark, the SGS (@sgs), MQW and SQS (@sqs) were calculated for groups of two to ten analogues per query.
-Aditionally, the _query similarity_ (the mean of all query-to-analogue similarities) and the _group similarity_ (the mean of all analogue-to-analogue similarities) were calculated, to compare against the MQW and SGS respectively.
+For the SSM benchmark, the SGS (@sgs), MQW and CS (@cs) were calculated for groups of two to ten analogues per query.
+Aditionally, the query similarity (QS), the mean of all query-to-analogue similarities, and the group similarity (GS), the mean of all analogue-to-analogue similarities, were calculated, to compare against the MQW and SGS respectively.
 
 === Dissimilarity Benchmark <edge-bench>
-The second benchmark specifically examines the behavior of the SQS metric under the aspect of dissimilarity.
+The second benchmark specifically examines the behavior of the CS metric under the aspect of dissimilarity.
 For one case, the query and ten "analogues" are selected randomly from the _ms2structures_ dataset.
 In another case, the ten similar compounds from the SSM benchmark are coupled with a random query from _ms2structures_, that exhibits a similarity of less than 0.15 to all members of the group. The results of ths benchmark will be used to examine the behaviour on samples with high group similarity but low query similarity.
 
-=== Analogue Search Benchmark <analogue_search_benchmark>
-The analogue search benchmark evaluates how well the SQS metric correlates with established similarity measures.
-This benchmark uses the ChemSpaceExplorer analogue search results to assess whether SSM-derived metrics provide meaningful insights into molecular similarity relationships.
-Using a dataset of #CITE[1000 test spectra] with known molecular structures, the ChemSpaceExplorer performs analogue searches to identify the top $n$ most similar compounds for each query molecule, where $n$ varies from 2 to 30 analogues.
-For each group of analogues, SGS, MQW, SQS,  _query similarity_ and _group similarity_ is calculated like in the SSM benchmark.
+=== ChemSpaceExplorer Benchmark <cse_benchmark>
+The ChemSpaceExplorer benchmark evaluates how well the CS metric correlates with established similarity measures.
+It uses the ChemSpaceExplorer's analogue search results to assess whether SSM-derived metrics provide meaningful insights into the retrieved analogue groups.
+Using a dataset of #CITE[1000 test spectra] with known molecular structures, the ChemSpaceExplorer performs analogue searches to identify the top $n$ most similar compounds for every query spectrum, where $n$ varies from 2 to 10 analogues.
+For each group of analogues, SGS, MQW, CS,  _query similarity_ and _group similarity_ is calculated like in the SSM benchmark.
 The metrics are compared against established similarity metrics including:
 - ISF scores from the ChemSpaceExplorer (@isf)
 - Predicted molecular distances from the ChemSpaceExplorer
