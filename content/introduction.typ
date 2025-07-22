@@ -83,8 +83,8 @@ What is a good default for the amount of analogues returned by the analogue sear
     - analogue to analogue similarities should be higher than 0.48 (0.57)
 //  - analogue to analogue distances should be lower than ??? (if 2.1 is proven)
 + validate SSM vis technique, for cases in which 1.1 - 1.3 is true
-  - CS should be above 0.95 in 95% of all queries
-  - CS should be below 0.5 for querys mismatching similar group
+  - SQS should be above 0.95 in 95% of all queries
+  - SQS should be below 0.5 for querys mismatching similar group
   - abs(SGS - group sim) is <= 0.05 for 95% of queries
   - compare to 2.2. results
 // + validate ISF score
