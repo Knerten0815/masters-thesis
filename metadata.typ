@@ -7,5 +7,5 @@
 #let advisors = ("David Sokalski, M.Sc.",)
 #let author = "Kevin R. Zielke"
 #let startDate = datetime(day: 7, month: 1, year: 2025)
-#let submissionDate = datetime(day: 8, month: 7, year: 2025)
+#let submissionDate = datetime(day: 19, month: 8, year: 2025)
 #let presentationDate = datetime(day: 29, month: 7, year: 2025)
