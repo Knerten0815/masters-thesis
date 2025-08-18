@@ -71,7 +71,7 @@ _In contrast to the Stacked Similarity benchmark and the other similarity metric
     [max], [0.359101], [0.335631], [0.687371], [0.476269], [0.861851], [0.418305], [0.175300],
     table.hline(),
   ),
-  caption: [Standard deviations, Minima and Maxima of the similarity metrics used in @f_cse_bench_sims.], // and the SQS plot used in @f_dissim_bench_sims],
+  caption: [*UPDATE!!!!* Standard deviations, Minima and Maxima of the similarity metrics used in @f_cse_bench_sims.], // and the SQS plot used in @f_dissim_bench_sims],
   placement: none,
 ) <t_cse_bench>
 
