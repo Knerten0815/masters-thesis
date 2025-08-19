@@ -30,16 +30,18 @@ Correlations between the metrics decrease across the board for increasing $n$, b
 ) <t_ssm_bench>
 
 #figure(
+  image("../figures/benchmarks/ssm_benchmark_corr.png", width: 100%),
+  caption: [Correlation matrix for the Stacked Similarity benchmark for $n=2$ and $n=10$. See supplemental material for correlation matrices of all $n$.],
+  placement: auto,
+) <f_ssm_bench_corr>
+
+#figure(
   image("../figures/benchmarks/ssm_benchmark_violins.png", width: 100%),
   caption: [Violin plots showing the distribution for query similarity, MQW, group similarity, SGS and SQS across varying group sizes on the controlled dataset with similar samples. Black lines denote the median, while color coded lines denote maximum, $0.75$- and $0.25$-quantile, and minimum. The solid line shows the mean for each group size.],
   placement: auto,
 ) <f_ssm_bench_sims>
 
-#figure(
-  image("../figures/benchmarks/ssm_benchmark_corr.png", width: 100%),
-  caption: [Correlation matrix for the Stacked Similarity benchmark for $n=2$ and $n=10$. See supplemental material for correlation matrices of all $n$.],
-  placement: auto,
-) <f_ssm_bench_corr>
+
 
 // #figure(
 //   image("../figures/benchmarks/ssm_benchmark_cs.png", width: 50%),
@@ -47,8 +49,7 @@ Correlations between the metrics decrease across the board for increasing $n$, b
 //   placement: auto,
 // ) <f_ssm_bench_cs>
 
-
-
+#pagebreak()
 == ChemSpaceExplorer Benchmark Results
 @f_ssm_bench_sims and @f_scaled_sims show comparable tendencies to the Stacked Similarity benchmark.
 All the mean similarity metrics decrease with increasing group size.
@@ -59,35 +60,35 @@ The lowest mean QS in the Stacked Similarity benchmark is $approx$ 0.78, while t
 _In contrast to the Stacked Similarity benchmark and the other similarity metrics of this benchmark, the SQS increases monotonically for $n in [2,10]$ (see @f_dissim_bench_sims)._
 
 #figure(
-  table(
-    columns: 8,
-    align: (left, right, right, right, right, right, right, right),
-    stroke: none,
-    table.hline(),
-    [], [query sim.], [QMW], [group sim.], [SGS], [SQS], [ISF], [distance],
-    table.hline(stroke: 0.5pt),
-    [std], [0.029118], [0.007869], [0.135346], [0.050779], [0.036870], [0.028496], [0.002044],
-    [min], [0.271683], [0.313382], [0.273916], [0.330557], [0.754254], [0.333411], [0.169333],
-    [max], [0.359101], [0.335631], [0.687371], [0.476269], [0.861851], [0.418305], [0.175300],
-    table.hline(),
-  ),
-  caption: [*UPDATE!!!!* Standard deviations, Minima and Maxima of the similarity metrics used in @f_cse_bench_sims.], // and the SQS plot used in @f_dissim_bench_sims],
-  placement: none,
-) <t_cse_bench>
-
-#figure(
   image("../figures/benchmarks/cse_benchmark_violins.png", width: 100%),
   caption: [The means of the similarity metrics for varying group sizes on the ChemSpaceExplorer's analogue search results.
     Visualization format as described in @f_ssm_bench_sims.],
   placement: auto,
 ) <f_cse_bench_sims>
 
+#figure(
+  table(
+    columns: 8,
+    align: (left, right, right, right, right, right, right, right),
+    stroke: none,
+    table.hline(),
+    [], [Query Sim.], [MQW], [Group Sim.], [SGS], [SQS], [ISF], [Distance],
+    table.hline(stroke: 0.5pt),
+    [std], [0.029118], [0.007869], [0.135346], [0.050779], [0.036870], [0.028496], [0.002044],
+    [min], [0.271683], [0.313382], [0.273916], [0.330557], [0.754254], [0.333411], [0.169333],
+    [max], [0.359101], [0.335631], [0.687371], [0.476269], [0.861851], [0.418305], [0.175300],
+    table.hline(),
+  ),
+  caption: [Standard deviations, Minima and Maxima of the similarity metrics used in @f_cse_bench_sims.], // and the SQS plot used in @f_dissim_bench_sims],
+  placement: none,
+) <t_cse_bench>
+
+
 // #figure(
 //   image("../figures/benchmarks/cse_benchmark_distance.png", width: 50%),
 //   caption: [Mean distance ....  on the ChemSpaceExplorer's analogue search results. ],
 //   placement: auto,
 // ) <f_cse_bench_distance>
-
 
 == Dissimilarity Benchmark
 The group similarity and the SGS for the dissimilarity benchmark are the same as in the Stacked Similarity benchmark, because the dissimilarity benchmark uses the same analogue groups, but adds queries with low similarities ($<0.15$) to each of the group compounds.
@@ -112,6 +113,21 @@ The means and distributions of query similarity, MQW and SQS stay consistent acr
   placement: auto,
 ) <f_scaled_sims>
 
+== Qualitative assessment
+
+#figure(
+  image("../figures/benchmarks/simmap_sample_cse_140.png", width: 120%),
+  caption: [A sample from the CSE benchmark, that shows high variance in group similarity and query similarity with increasing $n$ and the SQS reacting accordingly.],
+  //placement: auto,
+) <f_sample>
+
+#figure(
+  image("../figures/benchmarks/simmap_sample_hi_sim_23617.png", width: 120%),
+  caption: [A sample from the SSM benchmark. The analogue group already shows a clear pattern with n=3. More highly similar analogues dont add meaningful visual information.],
+  //placement: auto,
+) <f_redundancy>
+
+#pagebreak()
 == Summary
 
 This study evaluated Stacked Similarity Maps across three benchmarks with varying group sizes ($n = 2$ to $n = 10$) to assess the effect of group size on molecular similarity metrics.

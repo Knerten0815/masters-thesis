@@ -6,7 +6,7 @@
 = Methodology <methodology>
 Similarity maps are heat maps highlighting atomic similarity relationships between two compounds as described in @simmaps_ch and  @simmaps_cite.
 This chapter introduces Stacked Similarity Maps (SSM), that visually emphasize the atomic similarity relationships within a group of compounds of arbitrary size.
-The following sections describe the Stacked Group Similarity (SGS) metric and Consistency Score (CS), that will be used in @results in the quantitative analysis of the Stacked Similarity Map visualization technique.
+The following sections describe the Stacked Group Similarity (SGS) metric and Stacked Query Similarity (SQS), that will be used in @results in the quantitative analysis of the Stacked Similarity Map visualization technique.
 //Finally, the practical implementation is described in @implementation.
 
 == Stacked Similarity Maps <ssm>
@@ -14,8 +14,8 @@ The following sections describe the Stacked Group Similarity (SGS) metric and Co
 For a group of $n$ compounds ${C_1, C_2, ..., C_n}$, the pairwise atomic similarity weights between compounds $i$ and $j$ for atom $k$ are calculated as $w_(i,j)^((k))$, as described in @simmaps_ch, and stored in a matrix of weight vectors, where the diagonal is left empty (see @f_algo).
 
 #figure(
-  image("../figures/sim map algo.png", width: 100%),
-  caption: [Visualization of CS, SSM and SGS algorithms.],
+  image("../figures/sim map algo.png", width: 120%),
+  caption: [Visualization of SQS, SSM and SGS algorithms.],
   placement: auto,
 ) <f_algo>
 
@@ -52,9 +52,9 @@ It can not aggregate any more insight into the the group similarity relationship
 A simple group similarity approach, that takes the mean of all similarities within the group, will be more insightful in almost all cases.
 But the SGS is closely and intuitively intertwined with the SSM generation and can therefore be used to compare against the simpler group similarity approach, to test the validity of the visualization technique on a big dataset.
 
-== Consistency Score <cs>
+== Stacked Query Similarity <sqs>
 
-The Consistency Score (CS) measures _how the similarity relationships within a group of compounds match the similarities of each member of the group to another single molecule (query)._
+The Stacked Query Similarity (SQS) measures _how the similarity relationships within a group of compounds match the similarities of each member of the group to another single molecule (query)._
 
 For a group of $n$ compounds ${C_1, C_2, ..., C_n}$ and a query molecule $Q$, the pairwise atomic similarity weights between compound $i$ and $Q$ for atom $k$ are calculated as $w_(i,Q)^((k))$, as described in @simmaps_ch.
 With the mean query weights (MQW) described as:
@@ -74,16 +74,16 @@ $
   s_i^((k)) = 1 - (|Delta_i^((k))|)/2
 $
 
-The CS for the entire group is calculated by averaging the mean scaled similarity value of each compound in the group:
+The SQS for the entire group is calculated by averaging the mean scaled similarity value of each compound in the group:
 $
-  "CS" = 1/n sum_(i=1)^n frac(1, m_i) sum_(k=1)^(m_i) s_i^((k))
-$ <m_cs>
+  "SQS" = 1/n sum_(i=1)^n frac(1, m_i) sum_(k=1)^(m_i) s_i^((k))
+$ <m_sqs>
 where $n$ is the number of compounds in the group and $m_i$ is the number of atoms in compound $i$.
 
-_The lower the difference between the within-group similarity and the query-to-group similarities, the higher the CS will be._ That means if both values are high, the CS will be high. The CS will also be high, if both values are low.
-Conversely, the CS is low when there is a mismatch: high within-group similarity but low query-to-group similarities. This characteristic is used to examine the analogue search of the ChemSpaceExplorer (see @explorer) and compare it to the ISF score (see @isf).
+_The lower the difference between the within-group similarity and the query-to-group similarities, the higher the SQS will be._ That means if both values are high, the SQS will be high. The SQS will also be high, if both values are low.
+Conversely, the SQS is low when there is a mismatch: high within-group similarity but low query-to-group similarities. This characteristic is used to examine the analogue search of the ChemSpaceExplorer (see @explorer) and compare it to the ISF score (see @isf).
 
-Cases where low within-group similarity are combined with high query-to-group similarity also cause a low CS score.
+Cases where low within-group similarity are combined with high query-to-group similarity also cause a low SQS score.
 
 == Quantitative Analysis <benchmark>
 
@@ -99,19 +99,23 @@ For analogue groups with $n<10$, only the most similar $n$ compounds from the an
 To find out the best default group size for the ChemSpaceExplorer's analogue search, these sample 1000 spectra were used as queries in the analogue search benchmark.
 
 === Stacked Similarity Map Benchmark <ssm_benchmark>
-For the SSM benchmark, the SGS (@sgs), MQW and CS (@cs) were calculated for groups of two to ten analogues per query.
+For the SSM benchmark, the SGS (@sgs), MQW and SQS (@sqs) were calculated for groups of two to ten analogues per query.
 Aditionally, the query similarity (QS), the mean of all query-to-analogue similarities, and the group similarity (GS), the mean of all analogue-to-analogue similarities, were calculated, to compare against the MQW and SGS respectively.
 
 === Dissimilarity Benchmark <edge-bench>
-The second benchmark specifically examines the behavior of the CS metric under the aspect of dissimilarity.
+The second benchmark specifically examines the behavior of the SQS metric under the aspect of dissimilarity.
 For one case, the query and ten "analogues" are selected randomly from the _ms2structures_ dataset.
 In another case, the ten similar compounds from the SSM benchmark are coupled with a random query from _ms2structures_, that exhibits a similarity of less than 0.15 to all members of the group. The results of ths benchmark will be used to examine the behaviour on samples with high group similarity but low query similarity.
-
+#figure(
+  image("../figures/benchmarks/simmap_sample_cse_140.png", width: 120%),
+  caption: [A sample from the CSE benchmark, that shows high variance in group similarity and query similarity with increasing $n$ and the SQS reacting accordingly.],
+  placement: auto,
+) <f_sample>
 === ChemSpaceExplorer Benchmark <cse_benchmark>
-The ChemSpaceExplorer benchmark evaluates how well the CS metric correlates with established similarity measures.
+The ChemSpaceExplorer benchmark evaluates how well the SQS metric correlates with established similarity measures.
 It uses the ChemSpaceExplorer's analogue search results to assess whether SSM-derived metrics provide meaningful insights into the retrieved analogue groups.
 Using a dataset of 1000 sample spectra with known molecular structures, the ChemSpaceExplorer performs analogue searches to identify the top $n$ most similar compounds for every query spectrum, where $n$ varies from 2 to 10 analogues.
-For each group of analogues, SGS, MQW, CS,  _query similarity_ and _group similarity_ is calculated like in the SSM benchmark.
+For each group of analogues, SGS, MQW, SQS,  _query similarity_ and _group similarity_ is calculated like in the SSM benchmark.
 The metrics are compared against established similarity metrics including:
 - ISF scores from the ChemSpaceExplorer (@isf)
 - Predicted molecular distances from the ChemSpaceExplorer
@@ -119,22 +123,53 @@ The metrics are compared against established similarity metrics including:
 
 The benchmark generates correlation coefficients and statistical significance tests to determine whether the SSM-derived metrics provide comparable or complementary information to existing similarity measures.
 
+
+== Implementation
+
+The Stacked Similarity Maps methodology was implemented as a Python module (`similarity_maps.py`) and integrated into the ChemSpaceExplorer codebase. The implementation leverages the RDKit cheminformatics library for molecular fingerprint generation and visualization.
+
+The module provides several key functions:
+- `get_group_similarity_map_weights()`: Calculates stacked similarity weights for groups of molecules
+- `get_similarity_map_weights()`: Generates pairwise similarity weights between reference and probe molecules
+- Visualization functions for rendering similarity maps as SVG or byte sources
+- Support for multiple fingerprint types (Morgan, Atom Pairs, Topological Torsions, RDKit fingerprints)
+
+The `FingerprintFunction` class encapsulates fingerprint parameters and provides a unified interface for different fingerprint algorithms, enabling flexible experimentation with various molecular representations. @l_usage demonstrates typical usage of the module for generating Stacked Similarity Maps from a group of molecular analogues.
+
 #figure(
-  image("../figures/benchmarks/simmap_sample_cse_140.png", width: 100%),
-  caption: [A sample from the CSE benchmark.],
-  placement: auto,
-) <f_sample>
+  ```python
+  from ms_chemical_space_explorer.similarity_maps import (
+      generate_mols, get_group_similarity_map_weights,
+      get_similarity_map_svg_source, FingerprintFunction
+  )
 
-// == Implementation <implementation>
-// rdkit yadda yadda
+  # Define molecular analogues as SMILES strings
+  smiles = ["CC(=O)N1CCC[C@H]1C(=O)O",
+            "NCC(=O)N(C1)C(CC1)C(O)=O",
+            "CCC(=O)N1CCCC1C(=O)O"]
 
-// #figure(image("\figures\Similarity Maps\Beispiel gute Matches\query_mol.png", width: 50%), caption: [A curious figure.]) <testfig>
+  # Generate RDKit molecule objects
+  analogues = generate_mols(smiles)
 
-// #figure(
-//   table(
-//     columns: 4,
-//     [t], [1], [2], [3],
-//     [y], [0.3s], [0.4s], [0.8s],
-//   ),
-//   caption: [Timing results],
-// )<testtable>
+  # Configure fingerprint parameters
+  fp_function = FingerprintFunction()
+  fp_function.fingerprint = "MORGAN"
+  fp_function.morgan_radius = 9
+  fp_function.fp_type = "count"
+
+  # Calculate stacked similarity weights
+  analogue_weights = get_group_similarity_map_weights(
+      analogues, fp_function)
+
+  # Generate SVG visualizations
+  svg_sources = []
+  for analogue, weight in zip(analogues, analogue_weights):
+      svg = get_similarity_map_svg_source(
+          analogue, weight, size=(400, 400))
+      svg_sources.append(svg)
+  ```,
+  caption: [Typical usage of the similarity maps module for generating Stacked Similarity Maps from molecular analogues],
+  placement: bottom,
+) <l_usage>
+
+The implementation follows the mathematical formulations described in @ssm and @sgs, providing the computational foundation for the benchmarking studies presented in @results. The module is accessible through the ChemSpaceExplorer's REST API endpoint `/similarity_maps`, enabling web-based access to the visualization functionality.

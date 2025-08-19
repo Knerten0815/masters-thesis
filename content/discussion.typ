@@ -23,8 +23,7 @@ Conversely, in the ChemSpaceExplorer benchmark with lower and more diverse simil
 === Metric Stability and Reliability
 The remarkably low standard deviation of SQS in the Stacked Similarity benchmark (0.002393) compared to the ChemSpaceExplorer benchmark (0.036870) demonstrates that the metric exhibits greater stability under controlled conditions with high similarities. This stability indicates that SQS is a reliable metric for evaluating structural inference when working with highly similar molecular sets.
 
-=== Validation Through Correlation Analysis
-
+//=== Validation Through Correlation Analysis
 
 === Chemical Space Evaluation Capability
 The contrasting behavior of SQS across different similarity contexts demonstrates that this metric can effectively distinguish between scenarios where analogues provide meaningful structural information versus those where they introduce noise.
@@ -43,7 +42,13 @@ However, as mentioned in @problem they should not be used
 === Analogue Sampling
 Unfortantely it was not possible to sample groups with more than 10 analogues from the _ms2structures_ dataset, without compromising on the number of query samples or the minimum query-to-analogue similarity. Selecting 16 or 12 analogues for each query would reduce the sample size to 529 or 836 queries respectively. @dataset also features _biostructures_combined_ with 730,464 unique compounds, which could support sampling larger analogue groups, potentially using higher similarity thresholds too. The bottleneck was not the selection of analogues itself, but rather the calculation of the 730,464x730,464 matrix, used to look up compound similarities. The 16 GB RAM of the machine used to compute the similarity matrix could barely handle the task on the _ms2structures_ dataset. This would have required a machine with enormous RAM or rewriting the code to only partially compute, save and load the matrix, which would have gone beyond the scope of this thesis.
 
-=== No Hoomans used in study
+=== No Human Evaluation
+
+A significant limitation of this work is the absence of human subject evaluation to validate the claimed "intuitiveness" of Stacked Similarity Maps. While the computational benchmarks demonstrate the technical functionality and context-dependent behavior of the visualization technique, they cannot assess whether practicing chemists and mass spectrometry analysts actually find the visualizations intuitive, interpretable, or useful for their research workflows.
+
+User studies are particularly crucial for visualization techniques because the ultimate goal is to augment human decision-making and pattern recognition capabilities. Without empirical evidence from domain experts, several critical questions remain unanswered: Do the color-coded similarity patterns in SSMs actually help researchers identify meaningful molecular relationships? Can users correctly interpret the distinction between high and low group similarity scenarios? Does the visualization reduce cognitive load compared to examining individual similarity maps or numerical similarity scores?
+
+The lack of human validation limits the generalizability of claims about visualization effectiveness and represents a gap between computational performance and practical utility in real-world chemical analysis contexts.
 
 
 == Conclusion
@@ -69,7 +74,9 @@ _Benchmark Development:_ Successfully implemented three distinct benchmark scena
 
 // *Computational Implementation:* Developed robust computational workflows for similarity matrix calculation, analogue sampling, and metric evaluation that can handle large molecular datasets within reasonable computational constraints.
 
-_Context-Dependent Optimization:_ Established that optimal group size varies with similarity context - small groups (n=3) for high-similarity scenarios and larger groups (up to n=10) for diverse, lower-similarity datasets. This finding provides actionable guidance for analogue selection in cheminformatics applications. *Empfehlung für ChemSpaceExplorer???*
+_Context-Dependent Optimization:_ Established that optimal group size varies with similarity context - small groups (n=3) for high-similarity scenarios and larger groups (up to n=10) for diverse, lower-similarity datasets. This finding provides actionable guidance for analogue selection in cheminformatics applications.
+
+*Software Implementation:* Developed and integrated a comprehensive Python module (`similarity_maps.py`) into the ChemSpaceExplorer codebase, providing reusable functionality for generating Stacked Similarity Maps with support for multiple fingerprint algorithms and visualization formats.
 
 These contributions advance both the theoretical understanding of molecular similarity and its practical applications in drug discovery, virtual screening, and chemical space analysis. The findings provide evidence-based recommendations for optimizing analogue selection strategies across different chemical contexts.
 
@@ -98,6 +105,16 @@ The findings open several promising avenues for advancing molecular similarity a
 *Multi-Objective Optimization:* Integrate additional criteria beyond structural inference capability, such as chemical diversity, synthetic accessibility, or biological activity prediction, to provide holistic analogue selection recommendations.
 
 *Real-Time Applications:* Implement the findings in interactive chemical space exploration tools that provide real-time optimization suggestions based on user queries and available molecular databases.
+
+=== Human-Centered Validation
+
+*User Study Design:* Conduct comprehensive user studies with practicing mass spectrometry analysts, medicinal chemists, and metabolomics researchers to empirically validate the intuitiveness and effectiveness of Stacked Similarity Maps. Such studies should employ task-based evaluations where participants interpret SSM visualizations to make structural predictions, with performance measured against ground truth molecular structures.
+
+*Comparative Usability Assessment:* Design controlled experiments comparing SSM visualizations against traditional approaches (individual similarity maps, numerical similarity tables, molecular structure grids) to quantify improvements in interpretation speed, accuracy, and user confidence. These studies would provide crucial evidence for the claimed benefits of group-based similarity visualization.
+
+*Interactive Interface Development:* Develop and evaluate interactive interfaces that allow users to manipulate group sizes, similarity thresholds, and fingerprint parameters in real-time, studying how domain experts adapt these parameters for different analytical scenarios. Understanding user preferences and workflows would inform optimal default settings and interface design principles.
+
+*Training and Adoption Studies:* Investigate learning curves and training requirements for SSM interpretation, particularly for novice users, to develop educational resources and assess the technique's accessibility across different expertise levels in the chemical sciences.
 
 === Broader Applications
 

@@ -1,4 +1,12 @@
-Note:
-  1. *paragraph:* What is the motivation of your thesis? Why is it interesting from a scientific point of view? Which main problem do you like to solve?
-  2. *paragraph:* What is the purpose of the document? What is the main content, the main contribution?
-  3. *paragraph:* What is your methodology? How do you proceed?
+// Note:
+//   1. *paragraph:* What is the motivation of your thesis? Why is it interesting from a scientific point of view? Which main problem do you like to solve?
+//   2. *paragraph:* What is the purpose of the document? What is the main content, the main contribution?
+//   3. *paragraph:* What is your methodology? How do you proceed?
+
+Mass spectrometry-based structural elucidation of unknown compounds relies heavily on analyzing similarity relationships between query spectra and reference databases. While existing approaches focus on pairwise comparisons, the interpretation of similarity within groups of analogue compounds remains challenging, particularly when assessing the collective reliability of structural predictions derived from multiple analogues.
+
+This thesis introduces Stacked Similarity Maps (SSM), a novel visualization technique that extends traditional pairwise similarity maps to represent relationships within groups of molecular analogues. The approach aggregates atomic-level similarity contributions across multiple compounds, enabling intuitive assessment of which molecular features drive group-wide similarity patterns. Additionally, two complementary metrics are developed: Stacked Group Similarity (SGS) for quantifying internal group cohesion, and Stacked Query Similarity (SQS) for measuring consistency between query-to-group and within-group similarity relationships.
+
+The methodology is validated through comprehensive benchmarking across three distinct scenarios using 1,000 query compounds from established molecular datasets. The evaluation encompasses controlled high-similarity conditions, diverse low-similarity contexts from ChemSpaceExplorer analogue searches, and dissimilarity scenarios with mismatched query-group relationships. Results demonstrate that optimal group size for structural inference is context-dependent: small groups (n=3) prove most effective for highly similar analogues, while larger groups (up to n=10) benefit scenarios with lower individual similarities.
+
+The techniques are implemented as a reusable Python module integrated into the ChemSpaceExplorer codebase, supporting multiple molecular fingerprint algorithms and visualization formats. This work advances molecular similarity visualization by providing both theoretical insights into group-based similarity assessment and practical tools for enhanced chemical space exploration in metabolomics and drug discovery applications.

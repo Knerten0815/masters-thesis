@@ -2,8 +2,6 @@
 #import "../utils/cite-marker.typ": CITE
 #import "../utils/fig-marker.typ": FIG
 
-
-
 = Introduction <introduction>
 // #TODO[
 //   Introduce the topic of your thesis, e.g. with a little historical overview:
@@ -11,10 +9,10 @@
 Mass spectrometry (MS) is a widely used analytical technique in chemistry and biology to identify and quantify molecules based on their mass-to-charge ratio.
 The technique was first developed in the early 20th century @mass-spectrometry @mass-spectrometry2 and has evolved significantly over the years.
 A variant of this technique is tandem mass spectrometry (MS/MS) @tandem-ms, which uses two or more mass analyzers in sequence to provide detailed structural information about molecules.
-This approach provides greater specificity than single-stage mass spectrometry: while regular MS reveals molecular weight, MS/MS shows how molecules break apart, enabling the distinction between isomers that share the same mass but have different structures. #CITE[]
+This approach provides greater specificity than single-stage mass spectrometry: while regular MS reveals molecular weight, MS/MS shows how molecules break apart, enabling the distinction between isomers that share the same mass but have different structures. //#CITE[]
 Today, MS is used in various fields, including proteomics, metabolomics, drug discovery, clinical diagnostics, and environmental analysis, to study the composition of substance samples and identify unknown compounds @Workman2024.
 
-One of the key challenges in MS is the interpretation of the acquired data, which often requires expert knowledge and sophisticated algorithms to derive meaningful information from the raw measurements.#CITE[next cite might be enough. But maybe split it up better]
+One of the key challenges in MS is the interpretation of the acquired data, which often requires expert knowledge and sophisticated algorithms to derive meaningful information from the raw measurements.
 Recent advances in computational metabolomics have led to several machine learning and data visualization techniques to automate and improve the interpretation process @Workman2024 @Yates2009 @Collins2021 @Wu2025 @Liebal2020.
 A recent project at University of Applied Sciences Düsseldorf called ChemSpaceExplorer aims to enhance the analysis of MS data by providing a visual representation of chemical space, allowing researchers to explore and compare mass spectra in a chemcical space.
 The ChemSpaceExplorer can be used to upload query spectra with unknown molecular structure and find analogue spectra with known molecular structure, visualizing query and analogues in its representation of a 2D chemical space (see @f_screenshot).
@@ -53,18 +51,34 @@ The application furthermore visualizes the molecular structures of the analogues
 When querying a spectrum against reference spectra, the ChemSpaceExplorer retrieves nearest neighbors based on embedding proximity.
 However, the compounds in the chemical space are not evenly distributed - some regions are tightly clustered while others are sparsely populated.
 When a query falls within a dense cluster, its nearest neighbors typically exhibit high similarity and some shared substructures.
-This enables reliable inference of potential substructural elements present in the query compound (see #FIG[Good pick]).
+This enables reliable inference of potential substructural elements present in the query compound (see @f_hiGS_hiQS).
+#figure(
+  image("../figures/chemspace/hiGS_hiQS.png", width: 100%),
+  caption: [t-SNE representation of the chemical space for a sample from the @cse_benchmark showing high group and query similarity. Notice that the query was manually placed for highlighting the relationships in chemical space, but actual t-SNE coordinates are currently not calculated by the ChemSpaceExplorer.],
+  placement: auto,
+) <f_hiGS_hiQS>
 
 // #TODO[Würde noch stärker mit reinbringen, dass Ähnlichkeit zw. 2 Spektren (Query+Reference spectra) über Ähnliche Substrukturen abgebildet werden können.]
-If the query resides in a sparse region though, its neighbours may span significant distances in chemical space with less structural commonalities (see #FIG[low GS]).
+If the query resides in a sparse region though, its neighbours may span significant distances in chemical space with less structural commonalities (see @f_loGS_hiQS).
 _This disparity should be communicated to the user, as it directly impacts the confidence in structural predictions derived from the analogue set._
 
+#figure(
+  image("../figures/chemspace/loGS_hiQS.png", width: 100%),
+  caption: [t-SNE representation of the chemical space for a sample from the @cse_benchmark showing realatively low group but high query similarity. Good examples of this case are rare in the ChemSpaceExplorer benchmark, because high query similarity tends to correlate with high group similarity. Notice that the query was manually placed for highlighting the relationships in chemical space, but actual t-SNE coordinates are currently not calculated by the ChemSpaceExplorer.],
+  placement: auto,
+) <f_loGS_hiQS>
+
 Another factor influencing reliability of analogue predictions, is when the retrieved group of analogues is highly similar to each other, but not to the query spectrum.
-In this case, the user might be misled into thinking that the analogues are structurally similar to the query compound, when in fact they are not (see #FIG[high GS but low QS]).
+In this case, the user might be misled into thinking that the analogues are structurally similar to the query compound, when in fact they are not (see @f_hiGS_loQS).
+#figure(
+  image("../figures/chemspace/hiGS_loQS.png", width: 100%),
+  caption: [t-SNE representation of the chemical space for a sample from the @cse_benchmark showing high group but low query similarity. Notice that the query was manually placed for highlighting the relationships in chemical space, but actual t-SNE coordinates are currently not calculated by the ChemSpaceExplorer.],
+  placement: auto,
+) <f_hiGS_loQS>
 
 It becomes clear, that both the similarity of analogues to the query, as well as the similarities within the analogue group, are essential to _confidently_ infer structural information from the analgoue group.
 // #TODO[Better describe t-SNE dimensionality reduction, add figures]
-The clustering of the ChemSpaceExplorer already helps users to interpret the models confidence, as they can see the density of compounds in specific areas as well as all the distances of the compounds to each other (see #FIG[the 3 figs of cases above] and @f_screenshot).
+The clustering of the ChemSpaceExplorer already helps users to interpret the models confidence, as they can see the density of compounds in specific areas as well as all the distances of the compounds to each other (see @f_screenshot, @f_hiGS_hiQS and @f_hiGS_loQS).
 Additional to that, the molecular structures of the analogues are shown as a 2D plot when they are selected (see @f_screenshot), from which users can infer structural similarities between the query and the analogues.
 However molecular similarity is highly dependent on the choice of the molecular fingerprint and similarity metric @count_bits and it is not always clear which substructures lead to a high similarity score exactly.
 Alongside to showing the spatial distribution of analogues relative to the query spectrum, _a visualization technique that explicitly illustrates relationships among analogues might alleviate this issue._
@@ -72,7 +86,15 @@ Alongside to showing the spatial distribution of analogues relative to the query
 Another challenge in presenting a group of analogue molecule to a query molecule is picking the right group size.
 On one hand, the more analogues with a similar structure can be observed, the more information on the structure of the query can be infered.
 On the other hand, every additional nearest neighbour added to the analogue group has less similarity to the query, thus lowering the overall similarity of the group.
-Also displaying too many molecules, when the similarity among the group is consistently high, will at some point lead to redundant information #FIG[one of the similarity benchmark query figs].
+Also displaying too many molecules, when the similarity among the group is consistently high, will at some point lead to redundant information @f_simmap_example.
+#figure(
+  image(
+    "../figures/Similarity Maps/Beispiel gute Matches/Stacked Similarity Map Matrix/Stacked-Similarity-Map-Matrix-Row1.png",
+    width: 100%,
+  ),
+  caption: [Two similarity maps highlighting similarities and dissimilarities between the first molecule and the second and third molecules.],
+  placement: auto,
+) <f_simmap_example>
 // _One goal of this thesis is to pick a reasonable amount of analogues, which balances these criteria, for the ChemSPaceExplorer to display._
 
 // #TODO[Introduce Fingerprints]
@@ -95,20 +117,17 @@ By making relationship patterns immediately apparent rather than requiring exten
 Collectively, these improvements would transform spectra analysis from a primarily expert-driven process to a more accessible, efficient, and reliable analytical methodology.
 
 == Objectives <objectives>
-// #TODO[Falls du Forschungsfragen hast, kannst du die hier mit reinpacken.]
-This thesis aims to enhance the interpretation of molecular similarity in the ChemSpaceExplorer through improved visualization techniques. The primary objectives are:
+This thesis aims to enhance the interpretation of molecular similarity relationships through improved visualization techniques and quantitative analysis. The primary objectives are:
 
-+ *Develop an intuitive visual representation* of the similarity relationship of an unknown compound to a group of analogue molecules.
++ *Develop Stacked Similarity Maps*, a novel visualization technique that represents similarity relationships within groups of analogue compounds by extending traditional pairwise similarity maps to multi-compound scenarios.
 
-// + *Design methods to quantify and visualize density variations* in chemical space, enabling analysts to assess confidence levels in returned analogues based on neighborhood characteristics.
++ *Design and validate group similarity metrics* including Stacked Group Similarity (SGS) and Stacked Query Similarity (SQS) that quantify relationships between query compounds and analogue groups, enabling systematic evaluation of similarity visualization approaches.
 
-// + *Create algorithms for adaptive selection of analogues* that account for local density variations in chemical space, ensuring that presented compounds offer meaningful structural insights regardless of the query spectrum's location.
++ *Investigate optimal group size selection* through comprehensive benchmarking across different similarity contexts, providing evidence-based recommendations for analogue selection in chemical space exploration.
 
-+ *Evaluate the visualization approach* and compare it to other group similarity metrics.
++ *Implement the visualization techniques as a reusable module*, contributing to the ChemSpaceExplorer codebase with a comprehensive Python implementation supporting multiple fingerprint algorithms and visualization formats.
 
-+ *Integrate into the ChemSpaceExplorer backend*, enhancing its capability to support structural elucidation of unknown compounds.
-
-The research will focus on algorithmic development and visualization design, with evaluation based on computational validation against known molecular structures and objective performance metrics compared to existing approaches. Through these objectives, this thesis aims to transform the presentation of molecular similarity from abstract numerical values to rich, interpretable visual representations that leverage human pattern recognition capabilities while maintaining scientific rigor.
+The research focuses on algorithmic development, quantitative evaluation, and practical implementation, with validation based on computational benchmarking using established molecular datasets and comparison against existing similarity measures. Through these objectives, this thesis aims to advance the field of molecular similarity visualization by providing both theoretical insights and practical tools for chemical space analysis.
 
 // === Notes
 // What is a good default for the amount of analogues returned by the analogue search in the ChemSpaceExplorer?
@@ -139,7 +158,7 @@ This thesis is structured as follows:
 
 *@related-work* examines existing approaches for visualizing chemical similarity and molecular relationships. It analyzes current methods for representing group similarity and visualization techniques that support structural elucidation.
 
-*@methodology* documents the design and implementation of the implemented techniques to represent similarity relationships among analogue compounds. This chapter describes the algorithmic approach for visualizing mutual similarities between analogues, includes technical considerations and how the visualization techniques integrate into the ChemSpaceExplorer application.
+*@methodology* documents the design of the techniques to represent similarity relationships among analogue compounds. This chapter describes the algorithmic approach for visualizing mutual similarities between analogues, includes technical considerations for the developed metrics, and presents the implementation as a reusable Python module.
 // #TODO[Normalerweise ist die Struktur so:
 //   Results: nur Ergebnisse beschreiben, keine Einordnung
 //   Discussion: Einordnung der Ergebnisse, Bedeutung und Relevanz, hier werten

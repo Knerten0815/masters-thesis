@@ -99,7 +99,7 @@
   set par(leading: 1em)
 
   // --- Citations ---
-  set cite(style: "alphanumeric")
+  set cite(style: "ieee")
 
   // --- Figures ---
   show figure: set text(size: 0.85em)
@@ -139,10 +139,15 @@
   heading(numbering: none)[List of Tables]
   outline(title: "", target: figure.where(kind: table))
 
-  // Appendix.
-  pagebreak()
-  heading(numbering: none)[Appendix A: Supplementary Material]
-  include "appendix.typ"
+  v(15mm)
+  // List of listings.
+  heading(numbering: none)[List of Listings]
+  outline(title: "", target: figure.where(kind: raw))
+
+  // // Appendix.
+  // pagebreak()
+  // heading(numbering: none)[Appendix A: Supplementary Material]
+  // include "appendix.typ"
 
   pagebreak()
   bibliography("../thesis.bib", style: "ieee") // to change in-text citation change the cite funtion in line 105
