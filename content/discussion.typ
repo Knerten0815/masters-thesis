@@ -63,7 +63,7 @@ The research challenged the conventional assumption that larger analogue groups 
 === Key Contributions
 
 *Introduced Stacked Similarity Maps:* //Validated SQS as a robust metric for evaluating structural inference capability, demonstrating its sensitivity to meaningful similarity differences while maintaining stability under controlled conditions. The metric's behavior patterns provide insights into when analogues contribute meaningful versus redundant information.
-_This should be more about the Viz Tech, and that it works proven by the metrics, than about the metrics itself!_
+//_This should be more about the Viz Tech, and that it works proven by the metrics, than about the metrics itself!_
 _Metric Validation:_ Established SQS as a reliable metric for assessing structural inference capability. The metric demonstrated appropriate sensitivity to similarity context while maintaining stability in controlled scenarios.
 
 *Methodological Framework:* Developed a comprehensive benchmarking approach that can be applied to evaluate other molecular similarity methods and datasets. The three-benchmark design (controlled high-similarity, diverse low-similarity, and dissimilarity scenarios) provides a template for systematic evaluation of molecular similarity tools.
